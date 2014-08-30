@@ -8,20 +8,21 @@ Accepting a JSON request body and returning JSON as a result.
 
 Example Server
 ==============
+```php
+<?php
+require __DIR__ . '/../vendor/autoload.php';
 
-    <?php
-    require __DIR__ . '/../vendor/autoload.php';
-
-    $server = new Fordnox\JsonApiServer();
-    $server->register('ping', function($params){
-        return $params;
-    });
-    $server->handle();
-
+$server = new Fordnox\JsonApiServer();
+$server->register('ping', function($params){
+    return $params;
+});
+$server->handle();
+```
 
 Example Invoke
 ==============
+```bash
+curl http://api.com -d '{"method":"ping","params":"pong!"}'
 
-    curl http://api.com -d '{"method":"ping","params":"pong!"}'
-
-    {"result":"pong!", "error":null}
+{"result":"pong!", "error":null}
+```
